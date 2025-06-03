@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faBorderAll } from '@fortawesome/free-solid-svg-icons';
 import classes from './App.module.scss';
 import ListView from '../ListView/ListView';
+import TableView from '../TableView/TableView';
 
 function App() {
-    
+
     const variables = [
         {
             'Id': 'nih_age',
@@ -82,7 +83,7 @@ function App() {
                 </button>
             </div>
             <div className={classes.content}>
-                {activeView === 'list' ? <ListView variables={variables} tooltips={tooltips} /> : <div>Table</div>}
+                {activeView === 'list' ? <ListView variables={variables} tooltips={tooltips} /> : <TableView variables={variables} tooltips={tooltips} />}
             </div>
         </>
     )

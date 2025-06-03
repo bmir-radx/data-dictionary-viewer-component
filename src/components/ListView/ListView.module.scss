@@ -3,4 +3,6 @@
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   justify-items: center;
   gap: 20px;
+  max-height: 800px;
+  overflow-y: auto;
 }

@@ -3,7 +3,7 @@
 h1 {
   font-size: 2em;
   line-height: 1.1;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 2rem;
 }
 
 .buttons {
@@ -42,7 +42,5 @@ button {
   border-radius: 0.5rem;
   border: 1px solid $gray-200;
   padding: 1rem;
-  height: 800px;
-  overflow-y: scroll;
   box-shadow: $shadow;
 }
