@@ -1,24 +1,14 @@
 @import '../../styles/colors.scss';
 
-.tooltip {
-  position: relative;
-  display: inline-block;
+.help-icon {
   margin-right: 0.5rem;
   color: $teal;
   cursor: help;
-  &:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 120%;
-    background-color: $black;
-    color: $white;
-    padding: 0.35rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 400;
-    min-width: 7.5rem;
-    box-shadow: $shadow;
-    white-space: pre-wrap;
-    pointer-events: none;
-  }
+}
+
+.help-tooltip {
+  font-weight: 400;
+  max-width: 190px;
+  white-space: pre-wrap;
+  background-color: $black;
 }

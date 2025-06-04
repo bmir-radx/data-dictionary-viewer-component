@@ -1,3 +1,4 @@
+import { Tooltip as ReactTooltip } from 'react-tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import classes from './Tooltip.module.scss';
@@ -22,7 +23,10 @@ function Tooltip({field}) {
     };
 
     return (
-        <span className={classes.tooltip} data-tooltip={tooltips[field]}><FontAwesomeIcon icon={faCircleQuestion} /></span>
+        <>
+            <FontAwesomeIcon icon={faCircleQuestion} className={classes['help-icon']} data-tooltip-place='top' data-tooltip-position-strategy='fixed' data-tooltip-id={'help-tooltip-' + field} data-tooltip-content={tooltips[field]} />
+            <ReactTooltip id={'help-tooltip-' + field} className={classes['help-tooltip']} opacity={1} />
+        </>
     )
 }
 
