@@ -6,8 +6,16 @@ h1 {
   margin: 1.5rem 0 2rem;
 }
 
+.search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 2.5rem 0 1.5rem;
+}
+
 .buttons {
-  margin: 1.5rem 0;
+  margin-left: auto;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
@@ -35,12 +43,4 @@ button {
   .icon {
     margin-right: 0.5rem;
   }
-}
-
-.content {
-  background-color: $white;
-  border-radius: 0.5rem;
-  border: 1px solid $gray-200;
-  padding: 1rem;
-  box-shadow: $shadow;
 }
