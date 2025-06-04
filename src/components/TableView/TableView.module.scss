@@ -20,9 +20,10 @@ table {
     th {
       background-color: $blue;
       color: $white;
-      padding: 15px;
+      padding: 25px 15px;
       text-align: left;
       border: 1px solid $white;
+      white-space: nowrap;
     }
   }
   tbody {
@@ -35,14 +36,5 @@ table {
     td {
       padding: 20px 15px;
     }
-  }
-}
-
-.flex {
-  display: flex;
-  font-weight: 400;
-  .value {
-    font-family: monospace;
-    min-width: 4rem;
   }
 }

@@ -1,11 +1,11 @@
 import classes from './ListView.module.scss';
 import Card from '../Card/Card';
 
-function ListView({variables, tooltips}) {
+function ListView({variables}) {
 
     return (
         <div className={classes.cards}>
-            {variables.map((variable, idx) => <Card variable={variable} tooltips={tooltips} key={idx} />)}
+            {variables.map((variable, idx) => <Card variable={variable} key={idx} />)}
         </div>
     )
 }

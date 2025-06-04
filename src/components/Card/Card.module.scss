@@ -29,33 +29,4 @@ h3 {
       white-space: nowrap;
     }
   }
-  .values {
-    margin: 10px 0 4px;
-    line-height: 1.2;
-    .value {
-      font-family: monospace;
-      min-width: 4rem;
-    }
-  }
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    margin-right: 0.5rem;
-    color: $gray;
-    cursor: help;
-    &:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: 120%;
-      background-color: $black;
-      color: $white;
-      padding: 0.35rem 0.5rem;
-      border-radius: 0.25rem;
-      font-size: 0.75rem;
-      min-width: 7.5rem;
-      box-shadow: $shadow;
-      white-space: pre-wrap;
-      pointer-events: none;
-    }
-  }
 }

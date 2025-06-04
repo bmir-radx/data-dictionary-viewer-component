@@ -1,0 +1,12 @@
+.values {
+  margin: 10px 0 4px;
+  line-height: 1.2;
+  font-weight: 400;
+  .flex {
+    display: flex;
+    .value {
+      font-family: monospace;
+      min-width: 4rem;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../styles/colors.scss';
+
+.terms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  a {
+    font-size: 85%;
+    font-weight: 600;
+    color: $blue;
+    background-color: $gray-200;
+    padding: 4px 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: $shadow;
+    transition: all 0.15s ease-in-out;
+    &:hover {
+      background-color: $gray-300;
+    }
+  }
+}
