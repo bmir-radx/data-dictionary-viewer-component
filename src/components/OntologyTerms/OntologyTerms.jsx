@@ -3,7 +3,7 @@ import TextHighlighter from '../TextHighlighter/TextHighlighter';
 
 function OntologyTerms({terms, searchTerm}) {
 
-    const term_links = terms.split(' ').map((term, i) => {
+    const term_links = terms === '' ? [] : terms.split('\n').map((term, i) => {
         const [ontology, concept] = term.split(':');
         const encoded = ontology === 'NCIT'
             ? encodeURIComponent(`http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#${concept}`)
