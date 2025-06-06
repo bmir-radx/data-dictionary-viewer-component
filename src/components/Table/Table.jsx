@@ -4,7 +4,7 @@ import ValueCodes from '../ValueCodes/ValueCodes';
 import Tooltip from '../Tooltip/Tooltip';
 import TextHighlighter from '../TextHighlighter/TextHighlighter';
 
-function Table({variables, searchTerm, checkedColumns}) {
+function Table({variables, searchTerm, checkedColumns, tableRef}) {
 
     const fields = {
         'Id': undefined,
@@ -37,7 +37,7 @@ function Table({variables, searchTerm, checkedColumns}) {
     })
 
     return (
-        <div className={classes.wrapper}>
+        <div className={classes.wrapper} ref={tableRef}>
             <table>
                 <thead><tr>{headers}</tr></thead>
                 <tbody>{rows}</tbody>
