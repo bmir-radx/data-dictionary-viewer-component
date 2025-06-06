@@ -1,8 +1,8 @@
 import classes from './SearchBar.module.scss';
 
-function SearchBar({searchTerm, handleChange}) {
+function SearchBar({searchTerm, setSearchTerm}) {
 
-    return <input type='text' value={searchTerm} placeholder='🔍 Search data elements...' onChange={e => handleChange(e.target.value)} />
+    return <input className={classes.search} type='text' value={searchTerm} placeholder='🔍  Search data elements...' onChange={e => setSearchTerm(e.target.value)} />
 }
 
 export default SearchBar;

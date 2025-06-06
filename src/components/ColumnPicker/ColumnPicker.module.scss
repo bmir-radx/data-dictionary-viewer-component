@@ -1,0 +1,67 @@
+@import '../../styles/colors.scss';
+
+.wrapper {
+  position: relative;
+  &.open {
+    .picker {
+      background-color: $teal;
+      color: $white;
+    }
+    .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+}
+
+.picker {
+  cursor: pointer;
+  height: 35px;
+  width: 170px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: $white;
+  color: $teal;
+  border: 1px solid $teal;
+  border-radius: 3px;
+  box-shadow: $shadow;
+  transition: all 0.15s ease-in-out;
+  &:hover {
+    background-color: $teal;
+    color: $white;
+  }
+  .icon {
+    color: $black;
+    margin-right: 10px;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  z-index: 3;
+  background-color: $white;
+  border: 1px solid $gray-200;
+  border-radius: 3px;
+  box-shadow: $shadow;
+  padding: 10px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition: all 0.25s ease;
+  label {
+    display: block;
+    input {
+      margin-right: 5px;
+      accent-color: $teal;
+      vertical-align: middle;
+      position: relative;
+      bottom: 1px;
+    }
+  }
+}

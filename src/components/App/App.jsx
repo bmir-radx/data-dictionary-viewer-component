@@ -57,13 +57,13 @@ function App() {
         <>
             <h1>Data Dictionary Viewer</h1>
             <div className={classes.search}>
-                <SearchBar searchTerm={searchTerm} handleChange={setSearchTerm} />
+                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                 <div className={classes.buttons}>
-                    <button className={activeView === 'list' ? classes.active : ''} onClick={() => setActiveView('list')}>
+                    <button className={`${classes.button} ${activeView === 'list' ? classes.active : ''}`} onClick={() => setActiveView('list')}>
                         <FontAwesomeIcon icon={faList} className={classes.icon} />
                         List
                     </button>
-                    <button className={activeView === 'table' ? classes.active : ''} onClick={() => setActiveView('table')}>
+                    <button className={`${classes.button} ${activeView === 'table' ? classes.active : ''}`} onClick={() => setActiveView('table')}>
                         <FontAwesomeIcon icon={faBorderAll} className={classes.icon} />
                         Table
                     </button>

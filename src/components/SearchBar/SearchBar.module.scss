@@ -1,10 +1,13 @@
 @import '../../styles/colors.scss';
 
-input {
+.search {
   border-radius: 0.5rem;
-  padding: 0.75rem;
+  padding: 12px;
   width: 50%;
-  font-size: 100%;
+  font-size: 0.95rem;
   border: 1px solid $gray-200;
   box-shadow: $shadow;
+  &:focus {
+    outline: 1px solid $teal;
+  }
 }
