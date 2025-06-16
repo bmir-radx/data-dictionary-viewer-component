@@ -20,7 +20,7 @@ function Table({variables, searchTerm, checkedColumns, tableRef}) {
 
     const includedFields = Object.keys(fields).filter(col => checkedColumns.includes(col));
 
-    const headers = includedFields.map((field, i) => <th key={i} style={fields[field] && {minWidth: fields[field]}}><Tooltip field={field} />{field}</th>)
+    const headers = includedFields.map((field, i) => <th key={i} style={fields[field] && {minWidth: fields[field]}}><Tooltip id='table' field={field} />{field}</th>)
 
     const rows = variables.map((variable, idx) => {
         return <tr key={idx}>{includedFields.map((field, i) => {

@@ -23,7 +23,7 @@ function Card({variable, searchTerm}) {
         elements.push(
             <div className={classes['dd-field-block']} key={idx}>
                 <div className={classes.flex}>
-                    <span className={classes.field}><Tooltip field={field} /><strong>{field}:</strong></span>
+                    <span className={classes.field}><Tooltip id={variable['Id']} field={field} /><strong>{field}:</strong></span>
                     {!hasValues && element}
                 </div>
                 {hasValues && <ValueCodes values={variable[field]} searchTerm={searchTerm} />}
