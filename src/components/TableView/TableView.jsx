@@ -1,10 +1,15 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import classes from './TableView.module.scss';
 import TableOptions from '../TableOptions/TableOptions';
 import Table from '../Table/Table';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
-function TableView({variables, searchTerm, sortField, setSortField, sortDirection, setSortDirection, checkedColumns, setCheckedColumns}) {
+function TableView({activeView, variables, searchTerm}) {
+
+    const [checkedColumns, setCheckedColumns] = useState(['Id', 'Section', 'Label', 'Datatype', 'Cardinality', 'Enumeration', 'Additional Missing Value Codes']);
+
+    const [sortField, setSortField] = useState('Id');
+    const [sortDirection, setSortDirection] = useState('Ascending');
 
     const sortedVariables = variables.sort((a, b) => {
         return sortDirection === 'Ascending' ? a[sortField].localeCompare(b[sortField]) : b[sortField].localeCompare(a[sortField])
@@ -13,11 +18,11 @@ function TableView({variables, searchTerm, sortField, setSortField, sortDirectio
     const tableRef = useRef();
 
     return (
-        <>
+        <div style={{ display: activeView === 'table' ? 'block' : 'none' }}>
             <TableOptions sortField={sortField} setSortField={setSortField} sortDirection={sortDirection} setSortDirection={setSortDirection} checkedColumns={checkedColumns} setCheckedColumns={setCheckedColumns} />
             <Table variables={sortedVariables} searchTerm={searchTerm} checkedColumns={checkedColumns} tableRef={tableRef} />
             <ScrollToTop scrollRef={tableRef} />
-        </>
+        </div>
     )
 }
 

@@ -10,6 +10,7 @@ function TableOptions({sortField, setSortField, sortDirection, setSortDirection,
                 <select onChange={e => setSortField(e.target.value)} value={sortField}>
                     <option value='Id'>Id</option>
                     <option value='Section'>Section</option>
+                    <option value='Label'>Label</option>
                     <option value='Datatype'>Datatype</option>
                     <option value='Cardinality'>Cardinality</option>
                 </select>
