@@ -1,12 +1,19 @@
-# React + Vite
+# Data Dictionary Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+See original repository: [data-dictionary-viewer-radx](https://github.com/bmir-radx/data-dictionary-viewer-radx)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
 
-## Expanding the ESLint configuration
+```sh
+$ cd data-dictionary-viewer-component
+$ npm install
+$ npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Dependencies
+
+- [Font Awesome](https://docs.fontawesome.com/v5/web/use-with/react)
+- [react-tooltip](https://react-tooltip.com/)
+- [papaparse](https://www.papaparse.com/)
