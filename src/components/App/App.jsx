@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useTransition } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faBorderAll } from '@fortawesome/free-solid-svg-icons';
+import { faList, faBorderAll, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Papa from 'papaparse';
 import classes from './App.module.scss';
 import SearchBar from '../SearchBar/SearchBar';
@@ -13,6 +13,12 @@ function App() {
 
     const [variables, setVariables] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const [isPending, startTransition] = useTransition();
+
+    const changeHandler = e => {
+        startTransition(() => setSearchTerm(e.target.value));
+    };
 
     const fetchData = file => {
         try {
@@ -45,7 +51,7 @@ function App() {
         <>
             <h1>Data Dictionary Viewer</h1>
             <div className={classes.search}>
-                <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                <SearchBar changeHandler={changeHandler} />{isPending && <FontAwesomeIcon icon={faSpinner} spin className={classes.loader} />}
                 <div className={classes.buttons}>
                     <button className={`${classes.button} ${activeView === 'list' ? classes.active : ''}`} onClick={() => setActiveView('list')}>
                         <FontAwesomeIcon icon={faList} className={classes.icon} />
