@@ -29,7 +29,7 @@ function ColumnPicker({checkedColumns, setCheckedColumns}) {
                 {allColumns.map((column, i) => {
                     return (
                         <label key={i}>
-                            <input type='checkbox' checked={checkedColumns.includes(column)} value={column} onChange={e => e.target.checked ? setCheckedColumns(prev => [...prev, e.target.value]) : setCheckedColumns(prev => prev.filter(col => col !== e.target.value))} />
+                            <input type='checkbox' checked={checkedColumns.includes(column)} disabled={column === 'Id'} value={column} onChange={e => e.target.checked ? setCheckedColumns(prev => [...prev, e.target.value]) : setCheckedColumns(prev => prev.filter(col => col !== e.target.value))} />
                             {column}
                         </label>
                     )

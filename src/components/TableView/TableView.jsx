@@ -6,6 +6,8 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 function TableView({activeView, variables, searchTerm}) {
 
+    const [showScrollTop, setShowScrollTop] = useState(false);
+
     const [checkedColumns, setCheckedColumns] = useState(['Id', 'Section', 'Label', 'Datatype', 'Cardinality', 'Enumeration', 'Additional Missing Value Codes']);
 
     const [sortField, setSortField] = useState('Id');
@@ -20,8 +22,8 @@ function TableView({activeView, variables, searchTerm}) {
     return (
         <div style={{ display: activeView === 'table' ? 'block' : 'none' }}>
             <TableOptions sortField={sortField} setSortField={setSortField} sortDirection={sortDirection} setSortDirection={setSortDirection} checkedColumns={checkedColumns} setCheckedColumns={setCheckedColumns} />
-            <Table variables={sortedVariables} searchTerm={searchTerm} checkedColumns={checkedColumns} tableRef={tableRef} />
-            <ScrollToTop scrollRef={tableRef} />
+            <Table variables={sortedVariables} searchTerm={searchTerm} checkedColumns={checkedColumns} tableRef={tableRef} setShowScrollTop={setShowScrollTop} />
+            {showScrollTop && <ScrollToTop scrollRef={tableRef} />}
         </div>
     )
 }

@@ -17,3 +17,4 @@ $ npm run dev
 - [Font Awesome](https://docs.fontawesome.com/v5/web/use-with/react)
 - [react-tooltip](https://react-tooltip.com/)
 - [papaparse](https://www.papaparse.com/)
+- [react-virtuoso](https://virtuoso.dev/)

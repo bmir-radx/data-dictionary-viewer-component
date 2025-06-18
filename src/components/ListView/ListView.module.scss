@@ -1,8 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   justify-items: center;
   gap: 20px;
-  max-height: 750px;
-  overflow-y: auto;
 }

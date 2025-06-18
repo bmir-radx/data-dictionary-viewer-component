@@ -1,17 +1,18 @@
+import { TableVirtuoso } from 'react-virtuoso';
 import classes from './Table.module.scss';
 import OntologyTerms from '../OntologyTerms/OntologyTerms';
 import ValueCodes from '../ValueCodes/ValueCodes';
 import Tooltip from '../Tooltip/Tooltip';
 import TextHighlighter from '../TextHighlighter/TextHighlighter';
 
-function Table({variables, searchTerm, checkedColumns, tableRef}) {
+function Table({variables, searchTerm, checkedColumns, tableRef, setShowScrollTop}) {
 
     const fields = {
-        'Id': undefined,
+        'Id': 200,
         'Section': 120,
         'Label': 200,
         'Datatype': undefined,
-        'Terms': 120,
+        'Terms': 140,
         'Cardinality': undefined,
         'Unit': undefined,
         'Enumeration': 300,
@@ -22,8 +23,8 @@ function Table({variables, searchTerm, checkedColumns, tableRef}) {
 
     const headers = includedFields.map((field, i) => <th key={i} style={fields[field] && {minWidth: fields[field]}}><Tooltip id='table' field={field} />{field}</th>)
 
-    const rows = variables.map((variable, idx) => {
-        return <tr key={idx}>{includedFields.map((field, i) => {
+    const rows = variables.map((variable) => {
+        return includedFields.map((field, i) => {
             let element = <TextHighlighter text={variable[field]} searchTerm={searchTerm} />;
 
             if (field === 'Terms') {
@@ -32,17 +33,19 @@ function Table({variables, searchTerm, checkedColumns, tableRef}) {
                 element = (variable[field] === '' || variable[field] === undefined) ? variable[field] : <ValueCodes values={variable[field]} searchTerm={searchTerm} />
             }
 
-            return <td key={i}>{element}</td>})
-        }</tr>
+            return <td key={i}>{element}</td>
+        })
     })
 
     return (
-        <div className={classes.wrapper} ref={tableRef}>
-            <table>
-                <thead><tr>{headers}</tr></thead>
-                <tbody>{rows}</tbody>
-            </table>
-        </div>
+        <TableVirtuoso
+            ref={tableRef}
+            style={{ height: 700 }}
+            totalCount={rows.length}
+            itemContent={(rowIndex) => rows[rowIndex]}
+            fixedHeaderContent={() => <tr>{headers}</tr>}
+            atTopStateChange={(atTop) => setShowScrollTop(!atTop)}
+        />
     )
 }
 

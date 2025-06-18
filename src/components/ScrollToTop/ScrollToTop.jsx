@@ -5,26 +5,8 @@ import classes from './ScrollToTop.module.scss';
 
 function scrollToTop({scrollRef}) {
 
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-        const handler = (e) => {
-            if (e.target.scrollTop) {
-                setVisible(true);
-            } else {
-                setVisible(false);
-            }
-        };
-
-        const element = scrollRef.current;
-
-        element.addEventListener('scroll', handler);
-
-        return () => element.removeEventListener('scroll', handler);
-    })
-
     return (
-        <FontAwesomeIcon icon={faChevronUp} className={`${classes.scroll} ${visible ? classes.visible : ''}`} onClick={() => scrollRef.current.scrollTo({top: 0, behavior: 'smooth'})} />
+        <FontAwesomeIcon icon={faChevronUp} className={classes.scroll} onClick={() => scrollRef.current.scrollToIndex({index: 0, behavior: 'smooth'})} />
     )
 }
 

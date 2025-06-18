@@ -6,10 +6,9 @@ import TextHighlighter from '../TextHighlighter/TextHighlighter';
 
 function Card({variable, searchTerm}) {
 
-    const fields = ['Section', 'Label', 'Datatype', 'Terms', 'Cardinality', 'Unit', 'Enumeration', 'Additional Missing Value Codes'],
-        elements = [];
+    const fields = ['Section', 'Label', 'Datatype', 'Terms', 'Cardinality', 'Unit', 'Enumeration', 'Additional Missing Value Codes'];
 
-    fields.forEach((field, idx) => {
+    const elements = fields.map((field, idx) => {
         if (variable[field] === '' || variable[field] === undefined) return;
 
         const hasValues = ['Enumeration', 'Additional Missing Value Codes'].includes(field);
@@ -20,7 +19,7 @@ function Card({variable, searchTerm}) {
             element = <OntologyTerms terms={variable[field]} searchTerm={searchTerm} />
         }
 
-        elements.push(
+        return (
             <div className={classes['dd-field-block']} key={idx}>
                 <div className={classes.flex}>
                     <span className={classes.field}><Tooltip id={variable['Id']} field={field} /><strong>{field}:</strong></span>
