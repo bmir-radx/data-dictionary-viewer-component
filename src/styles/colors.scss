@@ -1,15 +1,21 @@
-$black: #1f2937;
+// Core colors with clear roles
+$text-color-black: #1f2937;            // Black for main text
+$title-color-teal: #00889d;       // Teal as title color 
+$table-background-header-blue: #003e70;         // Blue as table background header color
+$background-color: #f9fafb;      // Light gray background (gray-50)
+$muted-text-color: #6b7280;      // Gray for muted text
+$border-color: #d1d5db;          // Gray-300 for borders
 $white: #ffffff;
-$gray: #6b7280;
-$teal: #00889d;
-$blue: #003e70;
 
-$gray-50: #f9fafb;
-$gray-100: #f3f4f6;
-$gray-200: #e5e7eb;
-$gray-300: #d1d5db;
+
+$muted-text-color-50: #f9fafb;
+$muted-text-color-100: #f3f4f6;
+$muted-text-color-200: #e5e7eb;
+$muted-text-color-300: #d1d5db;
 
 $table-odd: #f7f7f7;
 $table-even: #eeeeee;
 
 $shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+
