@@ -4,7 +4,7 @@
   position: relative;
   &.open {
     .picker {
-      background-color: $teal;
+      background-color: $title-color-teal;
       color: $white;
     }
     .dropdown {
@@ -22,17 +22,17 @@
   font-size: 0.875rem;
   font-weight: 600;
   background-color: $white;
-  color: $teal;
-  border: 1px solid $teal;
+  color: $title-color-teal;
+  border: 1px solid $title-color-teal;
   border-radius: 3px;
   box-shadow: $shadow;
   transition: all 0.15s ease-in-out;
   &:hover {
-    background-color: $teal;
+    background-color: $title-color-teal;
     color: $white;
   }
   .icon {
-    color: $black;
+    color: $text-color-black;
     margin-right: 10px;
   }
 }
@@ -43,7 +43,7 @@
   top: 40px;
   z-index: 3;
   background-color: $white;
-  border: 1px solid $gray-200;
+  border: 1px solid $muted-text-color-200;
   border-radius: 3px;
   box-shadow: $shadow;
   padding: 10px;
@@ -58,7 +58,7 @@
     display: block;
     input {
       margin-right: 5px;
-      accent-color: $teal;
+      accent-color: $title-color-teal;
       vertical-align: middle;
       position: relative;
       bottom: 1px;

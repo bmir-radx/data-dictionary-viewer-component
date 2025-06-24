@@ -14,7 +14,7 @@ select {
   padding: 0 30px 0 10px;
   font-size: 0.875rem;
   font-weight: 600;
-  border: 1px solid $gray-200;
+  border: 1px solid $muted-text-color-200;
   box-shadow: $shadow;
   appearance: none;
   -moz-appearance: none;
@@ -24,6 +24,6 @@ select {
   background-repeat: no-repeat;
   background-size: 16px 12px;
   &:focus {
-    outline: 1px solid $teal;
+    outline: 1px solid $title-color-teal;
   }
 }

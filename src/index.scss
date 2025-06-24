@@ -3,12 +3,12 @@
 @import './styles/colors.scss';
 
 :root {
-  font-family: $primary-family;
+  font-family: $primary-font-family;
   line-height: 1.5;
   font-weight: 400;
 
-  color: $black;
-  background-color: $gray-50;
+  color: $text-color-black;
+  background-color: $background-color;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,7 +28,7 @@ body {
 }
 
 button, select, input {
-  font-family: $primary-family;
+  font-family: $primary-font-family;
 }
 
 #root {

@@ -2,12 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Favicon for browser tab -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Responsive design for mobile and desktop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Page title -->
     <title>Data Dictionary Viewer</title>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      Root div where React will render the application.
+      Input parameters for the app that we can modify:
+        - data-default-view: Sets initial view mode ('list' or 'table').
+        - data-search-field: Controls whether search bar is shown (true/false).
+        - data-data-dictionary-title: Controls whether title <h1> is displayed (true/false).
+      These attributes are read in main.jsx and passed as config to App.
+    -->
+    <div
+      id="root"
+      data-default-view="list" 
+      data-search-field="true"
+      data-data-dictionary-title="true"
+    ></div>
+
+    <!--
+      Load the main React entry point as a module script.
+      The React app mounts to #root and reads config from the data-* attributes above.
+    -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

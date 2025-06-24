@@ -2,7 +2,7 @@
 
 .help-icon {
   margin-right: 0.5rem;
-  color: $teal;
+  color: $title-color-teal;
   cursor: help;
 }
 
@@ -10,5 +10,5 @@
   font-weight: 400;
   max-width: 190px;
   white-space: pre-wrap;
-  background-color: $black;
+  background-color: $text-color-black;
 }

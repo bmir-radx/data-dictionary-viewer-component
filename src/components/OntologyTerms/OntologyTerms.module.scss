@@ -7,15 +7,15 @@
   a {
     font-size: 85%;
     font-weight: 600;
-    color: $blue;
-    background-color: $gray-200;
+    color: $table-background-header-blue;
+    background-color: $muted-text-color-200;
     padding: 4px 8px;
     border-radius: 5px;
     text-decoration: none;
     box-shadow: $shadow;
     transition: all 0.15s ease-in-out;
     &:hover {
-      background-color: $gray-300;
+      background-color: $muted-text-color-300;
     }
   }
 }
