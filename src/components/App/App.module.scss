@@ -1,9 +1,21 @@
-@import '../../styles/colors.scss';
+.container {
+  display: flex;
+  min-width: 570px;
+  color: var(--dd-color-text);
+  background-color: var(--dd-color-body-bg);
+}
 
-h1 {
+.main {
+  width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.title {
   font-size: 2em;
   line-height: 1.1;
   margin: 1.5rem 0 2rem;
+  color: var(--dd-color-text);
 }
 
 .search {
@@ -14,37 +26,36 @@ h1 {
   margin: 2.5rem 0 1.5rem;
 }
 
+.loader {
+  margin-left: 0.75rem;
+}
+
 .buttons {
   margin-left: auto;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-}
-
-.button {
-  cursor: pointer;
-  padding: 12px 20px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  background-color: $muted-text-color-200;
-  color: $text-color-black;
-  border-radius: 0.25rem;
-  border: 1px solid $muted-text-color-300;
-  box-shadow: $shadow;
-  transition: all 0.15s ease-in-out;
-  &:hover {
-    background-color: $muted-text-color-300;
+  button {
+    cursor: pointer;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dd-color-button-text);
+    background-color: var(--dd-color-button-bg);
+    border: 1px solid var(--dd-color-button-border);
+    border-radius: 0.25rem;
+    box-shadow: var(--dd-shadow);
+    transition: all 0.15s ease-in-out;
+    &:hover {
+      background-color: var(--dd-color-button-bg-hover);
+    }
+    &.active {
+      color: var(--dd-color-on-primary);
+      background-color: var(--dd-color-primary);
+      pointer-events: none;
+    }
+    .icon {
+      margin-right: 0.5rem;
+    }
   }
-  &.active {
-    background-color: $title-color-teal;
-    color: $white;
-    pointer-events: none;
-  }
-  .icon {
-    margin-right: 0.5rem;
-  }
-}
-
-.loader {
-  margin-left: 0.75rem;
 }

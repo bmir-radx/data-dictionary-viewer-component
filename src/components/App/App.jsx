@@ -6,11 +6,7 @@ import classes from './App.module.scss';
 import SearchBar from '../SearchBar/SearchBar';
 import Content from '../Content/Content';
 
-function App({ config }) {
-    // Use config to initialize view and search field
-    const initialView = config?.defaultView || 'list';
-    const initialShowSearch = config?.searchField !== undefined ? config.searchField : true;
-    const initialShowTitle = config?.dataDictionaryTitle !== undefined ? config.dataDictionaryTitle : true;
+function App({theme, file = 'sample.csv', initialView = 'list', showSearch = true, title = 'Data Dictionary Viewer'}) {
 
     const [activeView, setActiveView] = useState(initialView);
     const [searchTerm, setSearchTerm] = useState('');
@@ -44,7 +40,7 @@ function App({ config }) {
     };
 
     useEffect(() => {
-        fetchData('/sample.csv');
+        fetchData(file);
     }, []);
 
     if (loading) {
@@ -52,33 +48,35 @@ function App({ config }) {
     }
 
     return (
-        <>
-            {initialShowTitle && <h1>Data Dictionary Viewer</h1>}
-            <div className={classes.search}>
-                {initialShowSearch && (
-                    <SearchBar changeHandler={changeHandler} />
-                )}
-                {isPending && <FontAwesomeIcon icon={faSpinner} spin className={classes.loader} />}
-                <div className={classes.buttons}>
-                    <button
-                        className={`${classes.button} ${activeView === 'list' ? classes.active : ''}`}
-                        onClick={() => setActiveView('list')}
-                    >
-                        <FontAwesomeIcon icon={faList} className={classes.icon} />
-                        List
-                    </button>
-                    <button
-                        className={`${classes.button} ${activeView === 'table' ? classes.active : ''}`}
-                        onClick={() => setActiveView('table')}
-                    >
-                        <FontAwesomeIcon icon={faBorderAll} className={classes.icon} />
-                        Table
-                    </button>
+        <div className={`${classes.container} ${theme}`}>
+            <div className={classes.main}>
+                {title && <h1 className={classes.title}>{title}</h1>}
+                <div className={classes.search}>
+                    {showSearch && (
+                        <SearchBar changeHandler={changeHandler} />
+                    )}
+                    {isPending && <FontAwesomeIcon icon={faSpinner} spin className={classes.loader} />}
+                    <div className={classes.buttons}>
+                        <button
+                            className={activeView === 'list' ? classes.active : ''}
+                            onClick={() => setActiveView('list')}
+                        >
+                            <FontAwesomeIcon icon={faList} className={classes.icon} />
+                            List
+                        </button>
+                        <button
+                            className={activeView === 'table' ? classes.active : ''}
+                            onClick={() => setActiveView('table')}
+                        >
+                            <FontAwesomeIcon icon={faBorderAll} className={classes.icon} />
+                            Table
+                        </button>
+                    </div>
                 </div>
+                <Content activeView={activeView} variables={variables} searchTerm={searchTerm} />
             </div>
-            <Content activeView={activeView} variables={variables} searchTerm={searchTerm} />
-        </>
-    );
+        </div>
+    )
 }
 
 export default App;

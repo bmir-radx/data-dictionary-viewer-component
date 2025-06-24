@@ -1,8 +1,6 @@
-@import '../../styles/colors.scss';
-
 .help-icon {
   margin-right: 0.5rem;
-  color: $title-color-teal;
+  color: var(--dd-color-primary);
   cursor: help;
 }
 
@@ -10,5 +8,5 @@
   font-weight: 400;
   max-width: 190px;
   white-space: pre-wrap;
-  background-color: $text-color-black;
+  background-color: var(--dd-color-tooltip-background) !important;
 }

@@ -1,5 +1,3 @@
-@import '../../styles/colors.scss';
-
 .terms {
   display: flex;
   flex-wrap: wrap;
@@ -7,15 +5,15 @@
   a {
     font-size: 85%;
     font-weight: 600;
-    color: $table-background-header-blue;
-    background-color: $muted-text-color-200;
-    padding: 4px 8px;
+    color: var(--dd-color-secondary);
+    background-color: var(--dd-color-button-bg);
     border-radius: 5px;
+    padding: 4px 8px;
     text-decoration: none;
-    box-shadow: $shadow;
+    box-shadow: var(--dd-shadow);
     transition: all 0.15s ease-in-out;
     &:hover {
-      background-color: $muted-text-color-300;
+      background-color: var(--dd-color-button-bg-hover);
     }
   }
 }

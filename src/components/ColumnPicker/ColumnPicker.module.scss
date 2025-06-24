@@ -1,11 +1,12 @@
-@import '../../styles/colors.scss';
-
 .wrapper {
   position: relative;
   &.open {
     .picker {
-      background-color: $title-color-teal;
-      color: $white;
+      color: var(--dd-color-on-primary);
+      background-color: var(--dd-color-primary);
+      .icon {
+        color: var(--dd-color-on-primary);
+      }
     }
     .dropdown {
       opacity: 1;
@@ -21,19 +22,23 @@
   width: 170px;
   font-size: 0.875rem;
   font-weight: 600;
-  background-color: $white;
-  color: $title-color-teal;
-  border: 1px solid $title-color-teal;
+  color: var(--dd-color-primary);
+  background-color: var(--dd-color-content-bg);
+  border: 1px solid var(--dd-color-primary);
   border-radius: 3px;
-  box-shadow: $shadow;
+  box-shadow: var(--dd-shadow);
   transition: all 0.15s ease-in-out;
   &:hover {
-    background-color: $title-color-teal;
-    color: $white;
+    color: var(--dd-color-on-primary);
+    background-color: var(--dd-color-primary);
+    .icon {
+      color: var(--dd-color-on-primary);
+    }
   }
   .icon {
-    color: $text-color-black;
+    color: var(--dd-color-text);
     margin-right: 10px;
+    transition: all 0.15s ease-in-out;
   }
 }
 
@@ -42,10 +47,10 @@
   right: 0;
   top: 40px;
   z-index: 3;
-  background-color: $white;
-  border: 1px solid $muted-text-color-200;
+  background-color: var(--dd-color-content-bg);
+  border: 1px solid var(--dd-color-input-border);
   border-radius: 3px;
-  box-shadow: $shadow;
+  box-shadow: var(--dd-shadow);
   padding: 10px;
   font-size: 0.875rem;
   font-weight: 400;
@@ -58,7 +63,7 @@
     display: block;
     input {
       margin-right: 5px;
-      accent-color: $title-color-teal;
+      accent-color: var(--dd-color-primary);
       vertical-align: middle;
       position: relative;
       bottom: 1px;

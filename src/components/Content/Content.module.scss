@@ -1,12 +1,10 @@
-@import '../../styles/colors.scss';
-
 .content {
   position: relative;
-  background-color: $white;
+  background-color: var(--dd-color-content-bg);
+  border: 1px solid var(--dd-color-content-border);
   border-radius: 0.5rem;
-  border: 1px solid $muted-text-color-200;
   padding: 16px;
-  box-shadow: $shadow;
+  box-shadow: var(--dd-shadow);
   min-height: 834px;
 }
 

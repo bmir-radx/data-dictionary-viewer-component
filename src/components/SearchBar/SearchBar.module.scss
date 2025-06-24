@@ -1,13 +1,12 @@
-@import '../../styles/colors.scss';
-
 .search {
   border-radius: 0.5rem;
   padding: 12px;
   width: 50%;
   font-size: 0.95rem;
-  border: 1px solid $muted-text-color-200;
-  box-shadow: $shadow;
+  background-color: var(--dd-color-input-bg);
+  border: 1px solid var(--dd-color-input-border);
+  box-shadow: var(--dd-shadow);
   &:focus {
-    outline: 1px solid $title-color-teal;
+    outline: 1px solid var(--dd-color-primary);
   }
 }

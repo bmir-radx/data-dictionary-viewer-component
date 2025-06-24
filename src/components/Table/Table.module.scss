@@ -1,32 +1,33 @@
-@import '../../styles/colors.scss';
-
-table {
-  font-size: 0.875rem;
-  border-collapse: separate;
-  border-spacing: 0;
-  line-height: 1.2;
-  font-weight: 600;
-  width: 100%;
-  thead {
-    margin: 0;
-    th {
-      background-color: $table-background-header-blue;
-      color: $white;
-      padding: 25px 20px 25px 15px;
-      text-align: left;
-      border: 1px solid $white;
-      white-space: nowrap;
+.table {
+  height: 700px !important;
+  table {
+    font-size: 0.875rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    line-height: 1.2;
+    font-weight: 600;
+    width: 100%;
+    thead {
+      margin: 0;
+      th {
+        color: var(--dd-color-on-secondary);
+        background-color: var(--dd-color-secondary);
+        padding: 25px 20px 25px 15px;
+        text-align: left;
+        border: 1px solid var(--dd-color-table-border);
+        white-space: nowrap;
+      }
     }
-  }
-  tbody {
-    tr:nth-child(odd) {
-      background-color: $table-odd;
-    }
-    tr:nth-child(even) {
-      background-color: $table-even;
-    }
-    td {
-      padding: 20px 15px;
+    tbody {
+      tr:nth-child(odd) {
+        background-color: var(--dd-color-table-odd);
+      }
+      tr:nth-child(even) {
+        background-color: var(--dd-color-table-even);
+      }
+      td {
+        padding: 20px 15px;
+      }
     }
   }
 }

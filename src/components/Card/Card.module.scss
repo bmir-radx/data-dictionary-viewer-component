@@ -1,32 +1,29 @@
-@import '../../styles/colors.scss';
-
 .card {
   min-width: 90%;
   padding: 1rem;
+  background-color: var(--dd-color-card-bg);
+  border: 1px solid var(--dd-color-card-border);
   border-radius: 0.75rem;
-  border: 1px solid $muted-text-color-100;
-  box-shadow: $shadow;
-}
-
-h3 {
-  color: $title-color-teal;
-  margin: 1rem 0 1.5rem;
-}
-
-.dd-field-block {
-  background-color: $muted-text-color-100;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  border-radius: 0.5rem;
-  border: 1px solid $muted-text-color-200;
-  box-shadow: $shadow;
-  margin-bottom: 0.75rem;
-  .flex {
-    display: flex;
-    gap: 0.5rem;
-    .field {
-      white-space: nowrap;
+  box-shadow: var(--dd-shadow);
+  h3 {
+    color: var(--dd-color-primary);
+    margin: 1rem 0 1.5rem;
+  }
+  .dd-field-block {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    border-radius: 0.5rem;
+    background-color: var(--dd-color-card-block-bg);
+    border: 1px solid var(--dd-color-card-block-border);
+    box-shadow: var(--dd-shadow);
+    margin-bottom: 0.75rem;
+    .flex {
+      display: flex;
+      gap: 0.5rem;
+      .field {
+        white-space: nowrap;
+      }
     }
   }
 }

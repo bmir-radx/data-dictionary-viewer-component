@@ -5,7 +5,7 @@ function TableOptions({sortField, setSortField, sortDirection, setSortDirection,
 
     return (
         <div className={classes.options}>
-            <div className={classes.sort}>
+            <div>
                 Sort by:
                 <select onChange={e => setSortField(e.target.value)} value={sortField}>
                     <option value='Id'>Id</option>

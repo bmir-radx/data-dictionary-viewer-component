@@ -1,19 +1,17 @@
-@import '../../styles/colors.scss';
-
 .scroll {
   cursor: pointer;
   position: absolute;
   right: -50px;
   bottom: 8px;
-  color: $title-color-teal;
-  background-color: $white;
-  border: 1px solid $title-color-teal;
+  color: var(--dd-color-primary);
+  background-color: var(--dd-color-content-bg);
+  border: 1px solid var(--dd-color-primary);
   border-radius: 50%;
   padding: 8px;
-  box-shadow: $shadow;
+  box-shadow: var(--dd-shadow);
   transition: all 0.15s ease-in-out;
   &:hover {
-    background-color: $title-color-teal;
-    color: $white;
+    color: var(--dd-color-on-primary);
+    background-color: var(--dd-color-primary);
   }
 }

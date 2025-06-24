@@ -40,7 +40,7 @@ function Table({variables, searchTerm, checkedColumns, tableRef, setShowScrollTo
     return (
         <TableVirtuoso
             ref={tableRef}
-            style={{ height: 700 }}
+            className={classes.table}
             totalCount={rows.length}
             itemContent={(rowIndex) => rows[rowIndex]}
             fixedHeaderContent={() => <tr>{headers}</tr>}
