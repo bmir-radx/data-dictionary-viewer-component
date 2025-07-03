@@ -2,7 +2,19 @@
 
 [![](https://img.shields.io/npm/v/@cyouh95/data-dictionary-viewer.svg?style=for-the-badge)](https://www.npmjs.com/package/@cyouh95/data-dictionary-viewer)
 
-React component for data dictionary viewer.
+Data Dictionary Viewer is a customizable React component for visualizing data dictionaries from CSV files. It supports list and table views, includes built-in search, and offers modern, responsive styling. Easy to embed, easy to style.
+
+## Features
+🔍 Searchable: Filter variable names and descriptions
+
+🧱 Two Views: Toggle between List and Table formats
+
+🎨 Theme Support: Light and dark themes with CSS variable overrides
+
+🔌 Plug & Play: Easy to integrate in any React app
+
+⚡ Fast Parsing: Parses CSV files
+
 
 
 ## Installation
@@ -32,6 +44,8 @@ Use component as:
     theme = 'dark'  // default is light
 />
 ```
+You can customize the <DataDictionaryViewer /> component by modifying its props to suit your application's needs. The file prop is required and should point to the path of your CSV file. Use initialView to set the default layout mode—either 'list' or 'table'. Toggle the search functionality with the showSearch boolean prop. The title prop allows you to set a custom heading displayed above the viewer. Finally, use the theme prop to switch between 'light' (default) and 'dark' themes, which apply appropriate color schemes using CSS variables. All props are optional except for file, and can be combined for a tailored user experience.
+
 
 Customize styles by overriding CSS variables:
 
@@ -60,3 +74,26 @@ Or choose a theme and override CSS variables using corresponding class selector:
 - [Papa Parse](https://www.papaparse.com/)
 - [react-tooltip](https://react-tooltip.com/)
 - [react-virtuoso](https://virtuoso.dev/)
+
+
+## Project Structure
+Breakdown of the key files and folders in your project:
+
+Core Files: 
+
+| File         | Purpose                                                                                                   |
+| ------------ | --------------------------------------------------------------------------------------------------------- |
+| `index.html` | Loads the app in the browser and sets options like view type and whether to show the title or search bar. |
+| `main.jsx`   | Starts the React app and sends the HTML settings to the viewer component.                                 |
+| `index.jsx`  | Makes the `DataDictionaryViewer` component available for use in other projects.                           |
+| `App.jsx`    | Main component that handles the view layout, loads the CSV file, and filters data with search.            |
+
+
+Styling:
+
+| File                        | Purpose                                                                                            |
+| --------------------------- | -------------------------------------------------------------------------------------------------- |
+| `index.css`                 | Sets default styles like fonts, colors, and layout. Also includes support for light and dark mode. |
+| `fonts.scss`, `colors.scss` | Custom font and color settings you can change to match your branding or style.                     |
+
+
