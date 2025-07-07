@@ -47,6 +47,17 @@ Use component as:
 You can customize the <DataDictionaryViewer /> component by modifying its props to suit your application's needs. The file prop is required and should point to the path of your CSV file. Use initialView to set the default layout mode—either 'list' or 'table'. Toggle the search functionality with the showSearch boolean prop. The title prop allows you to set a custom heading displayed above the viewer. Finally, use the theme prop to switch between 'light' (default) and 'dark' themes, which apply appropriate color schemes using CSS variables. All props are optional except for file, and can be combined for a tailored user experience.
 
 
+Data Dictionary Viewer Components:
+
+| Prop Name     | Type     | Default   | Options                | Description                                      |
+|---------------|----------|-----------|-------------------------|--------------------------------------------------|
+| `file`        | string   | —         | *required*              | Path to the CSV data dictionary file.            |
+| `initialView` | string   | `'list'`  | `'list'`, `'table'`     | Sets the default view mode when component loads. |
+| `showSearch`  | boolean  | `true`    | `true`, `false`         | Toggle visibility of the search bar.             |
+| `title`       | string   | `'Data Dictionary Viewer'` | Any string  | Custom title displayed at the top.              |
+| `theme`       | string   | `'light'` | `'light'`, `'dark'`     | Choose between light or dark visual theme.       |
+
+
 Customize styles by overriding CSS variables:
 
 ```css
@@ -66,6 +77,20 @@ Or choose a theme and override CSS variables using corresponding class selector:
     ...
 }
 ```
+### 🎨 Color Usage in Data Dictionary Viewer
+
+| Variable Name            | Color (Name)     | Hex Code   | Usage Context                                      |
+|--------------------------|------------------|------------|----------------------------------------------------|
+| `--gray-100`             | Light Gray       | `#f3f4f6`  | Border of cards, background of card blocks         |
+| `--gray-200`             | Light Gray       | `#e5e7eb`  | Button background, card block border               |
+| `--gray-300`             | Medium Gray      | `#d1d5db`  | List/Card gray button hover background             |
+| `--black`                | Black            | `#1f2937`  | Default text, tooltip text                         |
+| `--white`                | White            | `#ffffff`  | Background for cards, tooltips, and inputs         |
+| `--dd-color-body-bg`     | Pale Blue/Grey   | `#f9fafb`  | App-wide background                                |
+| `--dd-color-primary`     | Teal             | `#00889d`  | Data element titles (`alcohol_date_mdy`, etc.)     |
+| `--dd-color-secondary`   | Dark Blue        | `#003e70`  | Table background header                            |
+| `--dd-color-table-odd`   | Soft Gray        | `#f7f7f7`  | Odd table row background                           |
+| `--dd-color-table-even`  | Pale Gray        | `#eeeeee`  | Even table row background                          |
 
 
 ## Dependencies
@@ -89,11 +114,5 @@ Core Files:
 | `App.jsx`    | Main component that handles the view layout, loads the CSV file, and filters data with search.            |
 
 
-Styling:
-
-| File                        | Purpose                                                                                            |
-| --------------------------- | -------------------------------------------------------------------------------------------------- |
-| `index.css`                 | Sets default styles like fonts, colors, and layout. Also includes support for light and dark mode. |
-| `fonts.scss`, `colors.scss` | Custom font and color settings you can change to match your branding or style.                     |
 
 
