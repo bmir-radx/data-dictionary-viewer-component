@@ -77,15 +77,10 @@ Or choose a theme and override CSS variables using corresponding class selector:
     ...
 }
 ```
-### 🎨 Color Usage in Data Dictionary Viewer
+### 🎨 Customizable colors in Data Dictionary Viewer
 
 | Variable Name            | Color (Name)     | Hex Code   | Usage Context                                      |
 |--------------------------|------------------|------------|----------------------------------------------------|
-| `--gray-100`             | Light Gray       | `#f3f4f6`  | Border of cards, background of card blocks         |
-| `--gray-200`             | Light Gray       | `#e5e7eb`  | Button background, card block border               |
-| `--gray-300`             | Medium Gray      | `#d1d5db`  | List/Card gray button hover background             |
-| `--black`                | Black            | `#1f2937`  | Default text, tooltip text                         |
-| `--white`                | White            | `#ffffff`  | Background for cards, tooltips, and inputs         |
 | `--dd-color-body-bg`     | Pale Blue/Grey   | `#f9fafb`  | App-wide background                                |
 | `--dd-color-primary`     | Teal             | `#00889d`  | Data element titles (`alcohol_date_mdy`, etc.)     |
 | `--dd-color-secondary`   | Dark Blue        | `#003e70`  | Table background header                            |
