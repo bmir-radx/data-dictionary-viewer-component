@@ -4,8 +4,9 @@ import OntologyTerms from '../OntologyTerms/OntologyTerms';
 import ValueCodes from '../ValueCodes/ValueCodes';
 import Tooltip from '../Tooltip/Tooltip';
 import TextHighlighter from '../TextHighlighter/TextHighlighter';
+import TableFilter from '../TableFilter/TableFilter';
 
-function Table({variables, searchTerm, checkedColumns, tableRef, setShowScrollTop}) {
+function Table({variables, searchTerm, checkedColumns, filters, setFilters, allValues, filteredValues, tableRef, setShowScrollTop}) {
 
     const fields = {
         'Id': 200,
@@ -21,7 +22,15 @@ function Table({variables, searchTerm, checkedColumns, tableRef, setShowScrollTo
 
     const includedFields = Object.keys(fields).filter(col => checkedColumns.includes(col));
 
-    const headers = includedFields.map((field, i) => <th key={i} style={fields[field] && {minWidth: fields[field]}}><Tooltip id='table' field={field} />{field}</th>)
+    const headers = includedFields.map((field, i) => {
+        return (
+            <th key={i} style={fields[field] && {minWidth: fields[field]}}>
+                <Tooltip id='table' field={field} />
+                {field}
+                {['Section', 'Datatype', 'Cardinality', 'Unit'].includes(field) && <TableFilter field={field} filters={filters} setFilters={setFilters} allValues={allValues} filteredValues={filteredValues} />}
+            </th>
+        )
+    })
 
     const rows = variables.map((variable) => {
         return includedFields.map((field, i) => {
