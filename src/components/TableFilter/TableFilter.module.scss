@@ -5,7 +5,7 @@
     .icon {
       color: var(--dd-color-button-bg-hover);
       &.active {
-        color: var(--dd-color-primary);
+        color: yellow;
       }
     }
     .dropdown {
@@ -25,7 +25,7 @@
     color: var(--dd-color-button-bg-hover);
   }
   &.active {
-    color: var(--dd-color-primary);
+    color: yellow;
   }
 }
 
