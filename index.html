@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Favicon for browser tab -->
+    <link rel="icon" type="image/x-icon" href="/data-dictionary-viewer-component/favicon.ico" />
+    
+    <!-- Responsive design for mobile and desktop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Page title -->
+    <title>Data Dictionary Viewer</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+
+      .input {
+        width: 800px;
+        margin: 200px auto;
+      }
+
+      .options {
+        display: flex;
+        justify-content: space-between;
+        width: 400px;
+        margin: auto;
+      }
+
+      .options div {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        background-color: #e5e7eb;
+        border-radius: 50%;
+        text-align: center;
+        vertical-align: middle;
+        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      }
+
+      .options div.active {
+        color: #ffffff;
+        background-color: #00889d;
+      }
+
+      .options div:not(.active) {
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+      }
+
+      .options div:not(.active):hover {
+        background-color: #d1d5db;
+      }
+
+      .tabs {
+        width: 800px;
+        display: flex;
+      }
+
+      .tabs i {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      .tabs div {
+        display: none;
+        margin: 100px auto 0;
+      }
+
+      .tabs div.active {
+        display: block;
+      }
+
+      .button {
+        display: block;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: #ffffff;
+        background: #00889d;
+        padding: 15px 35px;
+        user-select: none;
+        font-size: 16px;
+        letter-spacing: 1.5px;
+        box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.35);
+        border-radius: 3px;
+        transition: all 0.15s ease;
+      }
+
+      .button:hover {
+        filter: brightness(1.15);
+      }
+
+      textarea {
+        resize: none;
+        width: 400px;
+        height: 200px;
+        margin-top: -50px;
+      }
+
+      .submit {
+        border: none;
+      }
+
+      #fileInput {
+        display: none;
+      }
+
+      #quote input[type="submit"] {
+        margin: 40px auto 0;
+      }
+
+      #link span {
+        font-family: monospace;
+        font-weight: 600;
+      }
+
+      #link input[type="text"] {
+        width: 70px;
+      }
+
+      #link input[type="submit"] {
+        margin: 100px auto 0;
+      }
+    </style>
+    <script type="module" crossorigin src="/data-dictionary-viewer-component/assets/index-xPjkgwEK.js"></script>
+    <link rel="stylesheet" crossorigin href="/data-dictionary-viewer-component/assets/index-B0B86XiC.css">
+  </head>
+  <body>
+    <div id="root">
+      <div class="input">
+        <div class="options">
+          <div class="active" data-tab="upload"><i class="fa-solid fa-upload"></i></div>
+          <div data-tab="quote"><i class="fa-solid fa-quote-left"></i></div>
+          <div data-tab="link"><i class="fa-solid fa-link"></i></div>
+        </div>
+        <div class="tabs">
+          <div id="upload" class="active">
+            <input type="file" id="fileInput" />
+            <label class="button" for="fileInput">Upload File</label>
+          </div>
+          <div id="quote">
+            <textarea placeholder="Id,Label,Terms,Datatype&#10;nih_record_id,User ID,,string&#10;nih_age,What is your age?,PATO:0000011,integer"></textarea>
+            <input class="button submit" type="submit" value="Submit">
+          </div>
+          <div id="link">
+            <span>https://radxdatahub.nih.gov/api/launch/StudyOverview/getMetadata?fileId=</span>
+            <input type="text" placeholder="25207" />
+            <input class="button submit" type="submit" value="Submit">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const buttons = document.querySelectorAll('.options div');
+      const tabs = document.querySelectorAll('.tabs div');
+      buttons.forEach(button => button.addEventListener('click', e => {
+        buttons.forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector('#' + e.currentTarget.dataset.tab).classList.add('active');
+      }));
+    </script>
+
+    <!--
+      Load the main React entry point as a module script.
+      The React app mounts to #root and reads config from the data-* attributes above.
+    -->
+  </body>
+</html>
