@@ -37,24 +37,23 @@ Use component as:
 
 ```js
 <DataDictionaryViewer 
-    file = 'data_dictionary_file.csv'  // required
+    data = 'data_dictionary_file.csv'  // required
     initialView = 'list'
     showSearch = {true}
-    title = 'Data Dictionary Viewer'
+    heading = 'Data Dictionary Viewer'
     theme = 'dark'  // default is light
 />
 ```
-You can customize the <DataDictionaryViewer /> component by modifying its props to suit your application's needs. The file prop is required and should point to the path of your CSV file. Use initialView to set the default layout mode—either 'list' or 'table'. Toggle the search functionality with the showSearch boolean prop. The title prop allows you to set a custom heading displayed above the viewer. Finally, use the theme prop to switch between 'light' (default) and 'dark' themes, which apply appropriate color schemes using CSS variables. All props are optional except for file, and can be combined for a tailored user experience.
 
 
 Data Dictionary Viewer Components:
 
 | Prop Name     | Type     | Default   | Options                | Description                                      |
 |---------------|----------|-----------|-------------------------|--------------------------------------------------|
-| `file`        | string   | —         | *required*              | Path to the CSV data dictionary file.            |
+| `data`        | string   | —         | *required*              | Path to the CSV data dictionary file OR string containing the data OR URL to API endpoint. |
 | `initialView` | string   | `'list'`  | `'list'`, `'table'`     | Sets the default view mode when component loads. |
 | `showSearch`  | boolean  | `true`    | `true`, `false`         | Toggle visibility of the search bar.             |
-| `title`       | string   | `'Data Dictionary Viewer'` | Any string  | Custom title displayed at the top.              |
+| `heading`     | string   | `'Data Dictionary Viewer'` | Any string  | Custom title displayed at the top.              |
 | `theme`       | string   | `'light'` | `'light'`, `'dark'`     | Choose between light or dark visual theme.       |
 
 

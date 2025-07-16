@@ -6,7 +6,7 @@ import classes from './App.module.scss';
 import SearchBar from '../SearchBar/SearchBar';
 import Content from '../Content/Content';
 
-function App({theme, file = 'sample.csv', initialView = 'list', showSearch = true, title = 'Data Dictionary Viewer'}) {
+function App({theme, data, initialView = 'list', showSearch = true, heading = 'Data Dictionary Viewer'}) {
 
     const [activeView, setActiveView] = useState(initialView);
     const [searchTerm, setSearchTerm] = useState('');
@@ -20,28 +20,38 @@ function App({theme, file = 'sample.csv', initialView = 'list', showSearch = tru
         startTransition(() => setSearchTerm(e.target.value));
     };
 
-    const fetchData = file => {
+    const parseData = text => {
+        Papa.parse(text, {
+            header: true,
+            skipEmptyLines: true,
+            complete: result => {
+                setVariables(result.data);
+                setLoading(false);
+            }
+        });
+    }
+
+    const fetchData = data => {
         try {
-            fetch(file)
-                .then(response => response.text())
-                .then(text => {
-                    Papa.parse(text, {
-                        header: true,
-                        skipEmptyLines: true,
-                        complete: data => {
-                            setVariables(data.data);
-                            setLoading(false);
-                        }
-                    });
-                });
+            if (data.toLowerCase().endsWith('.csv')) {
+                fetch(data)
+                    .then(response => response.text())
+                    .then(text => parseData(text));
+            } if (data.toLowerCase().includes('radxdatahub')) {
+                fetch(data)
+                    .then(response => response.json())
+                    .then(text => parseData(text.data));
+            } else {
+                parseData(data);
+            }
         } catch (e) {
             console.log(e);
         }
     };
 
     useEffect(() => {
-        fetchData(file);
-    }, []);
+        fetchData(data);
+    }, [data]);
 
     if (loading) {
         return <></>;
@@ -50,7 +60,7 @@ function App({theme, file = 'sample.csv', initialView = 'list', showSearch = tru
     return (
         <div className={`${classes.container} ${theme}`}>
             <div className={classes.main}>
-                {title && <h1 className={classes.title}>{title}</h1>}
+                {heading && <h1 className={classes.title}>{heading}</h1>}
                 <div className={classes.search}>
                     {showSearch && (
                         <SearchBar changeHandler={changeHandler} />
