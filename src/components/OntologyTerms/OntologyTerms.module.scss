@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
+
   a {
     font-size: 85%;
     font-weight: 600;
@@ -12,6 +13,12 @@
     text-decoration: none;
     box-shadow: var(--dd-shadow);
     transition: all 0.15s ease-in-out;
+
+    // ✅ Add these 3 lines to fix long URLs wrapping
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    display: inline-block;
+
     &:hover {
       background-color: var(--dd-color-button-bg-hover);
     }
