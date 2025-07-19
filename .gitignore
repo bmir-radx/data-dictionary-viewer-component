@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+build
+web/*
+!web/data-dictionary-viewer.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
     build: {
         lib: {
-            entry: resolve(__dirname, 'src/webcomponents.jsx'),
+            entry: resolve(__dirname, 'src/web.jsx'),
             name: 'Data Dictionary Viewer',
             formats: ['es', 'umd'],
             fileName: 'data-dictionary-viewer'
