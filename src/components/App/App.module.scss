@@ -1,6 +1,7 @@
 .container {
   display: flex;
   min-width: 570px;
+  font-family: var(--dd-font-family);
   color: var(--dd-color-text);
   background-color: var(--dd-color-body-bg);
 }
