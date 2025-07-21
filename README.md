@@ -20,7 +20,7 @@ Data Dictionary Viewer is a customizable component for visualizing data dictiona
 
 ## Project overview
 
-- [React](https://react.dev/): v19.1.0
+- [React](https://react.dev/): v18.2.0
 - [Node.js](https://nodejs.org/en): v22.16.0
 - [NPM](https://www.npmjs.com/): v10.9.2
 
