@@ -16,7 +16,7 @@ function Tooltip({id, field}) {
         'Pattern': 'Regex pattern values must match',
         'Unit': 'Units for values that represent quantities',
         'Enumeration': 'List of allowed values and meanings',
-        'Additional Missing Value Codes': 'Reasons for missing values',
+        'MissingValueCodes': 'Reasons for missing values',
         'Notes': 'Free-text field for additional comments',
         'Provenance': 'Provenance source',
         'SeeAlso': 'URL to additional documentation'

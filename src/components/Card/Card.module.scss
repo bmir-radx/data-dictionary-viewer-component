@@ -24,6 +24,11 @@
       .field {
         white-space: nowrap;
       }
+      .text {
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        display: inline-block;
+      }
     }
   }
 }

@@ -4,16 +4,14 @@ import ValueCodes from '../ValueCodes/ValueCodes';
 import Tooltip from '../Tooltip/Tooltip';
 import TextHighlighter from '../TextHighlighter/TextHighlighter';
 
-function Card({variable, searchTerm}) {
+function Card({variable, searchTerm, allFields}) {
 
-    const fields = ['Section', 'Label', 'Datatype', 'Terms', 'Cardinality', 'Unit', 'Enumeration', 'Additional Missing Value Codes'];
-
-    const elements = fields.map((field, idx) => {
+    const elements = allFields.filter(x => x !== 'Id').map((field, idx) => {
         if (variable[field] === '' || variable[field] === undefined) return;
 
-        const hasValues = ['Enumeration', 'Additional Missing Value Codes'].includes(field);
+        const hasValues = ['Enumeration', 'MissingValueCodes'].includes(field);
 
-        let element = <span><TextHighlighter text={variable[field]} searchTerm={searchTerm} /></span>;
+        let element = <span className={classes.text}><TextHighlighter text={variable[field]} searchTerm={searchTerm} /></span>;
 
         if (field === 'Terms') {
             element = <OntologyTerms terms={variable[field]} searchTerm={searchTerm} />

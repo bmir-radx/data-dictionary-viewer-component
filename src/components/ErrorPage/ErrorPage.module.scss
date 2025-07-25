@@ -1,0 +1,30 @@
+.error {
+  font-family: var(--dd-font-family);
+  width: 400px;
+  margin: 200px auto;
+  text-align: center;
+  p {
+    margin: 50px 0;
+  }
+  .error-button {
+    display: block;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #00889d;
+    margin: 0 auto;
+    padding: 15px 35px;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    box-shadow: var(--dd-shadow);
+    border-width: 0;
+    border-radius: 3px;
+    transition: all 0.15s ease;
+    &:hover {
+      filter: brightness(1.15);
+    }
+    .icon {
+      margin-right: 12px;
+    }
+  }
+}

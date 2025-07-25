@@ -5,7 +5,7 @@ import classes from './ListView.module.scss';
 import Card from '../Card/Card';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
-function ListView({ activeView, variables, searchTerm }) {
+function ListView({activeView, variables, searchTerm, allFields}) {
     const listRef = useRef();
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [containerRef, width] = useContainerWidth();
@@ -28,7 +28,7 @@ function ListView({ activeView, variables, searchTerm }) {
                     return (
                         <div className={classes.cards}>
                             {rowItems.map((variable, i) => (
-                                <Card variable={variable} searchTerm={searchTerm} key={i} />
+                                <Card variable={variable} searchTerm={searchTerm} allFields={allFields} key={i} />
                             ))}
                         </div>
                     );

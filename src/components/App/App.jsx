@@ -5,6 +5,7 @@ import Papa from 'papaparse';
 import classes from './App.module.scss';
 import SearchBar from '../SearchBar/SearchBar';
 import Content from '../Content/Content';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 function App({theme, data, initialView = 'list', showSearch = true, heading = 'Data Dictionary Viewer'}) {
 
@@ -13,6 +14,7 @@ function App({theme, data, initialView = 'list', showSearch = true, heading = 'D
 
     const [variables, setVariables] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const [isPending, startTransition] = useTransition();
 
@@ -32,20 +34,23 @@ function App({theme, data, initialView = 'list', showSearch = true, heading = 'D
     }
 
     const fetchData = data => {
-        try {
-            if (data.toLowerCase().endsWith('.csv')) {
-                fetch(data)
-                    .then(response => response.text())
-                    .then(text => parseData(text));
-            } if (data.toLowerCase().includes('radxdatahub')) {
-                fetch(data)
-                    .then(response => response.json())
-                    .then(text => parseData(text.data));
-            } else {
-                parseData(data);
-            }
-        } catch (e) {
-            console.log(e);
+        if (data.toLowerCase().endsWith('.csv')) {
+            fetch(data)
+                .then(response => response.text())
+                .then(text => parseData(text));
+        } if (data.toLowerCase().includes('radxdatahub')) {
+            fetch(data)
+                .then(response => {
+                    if (response.ok) return response.json();
+                    throw new Error('Request failed!');
+                })
+                .then(text => parseData(text.data))
+                .catch(e => {
+                    setLoading(false);
+                    setError(true);
+                });
+        } else {
+            parseData(data);
         }
     };
 
@@ -54,7 +59,21 @@ function App({theme, data, initialView = 'list', showSearch = true, heading = 'D
     }, [data]);
 
     if (loading) {
-        return <></>;
+        return <FontAwesomeIcon icon={faSpinner} spin className={classes.fetch} />
+    }
+
+    if (error) {
+        return <ErrorPage message="Unable to fetch data." />
+    }
+
+    if (variables.length === 0) {
+        return <ErrorPage message="No data provided." />
+    }
+
+    const allFields = ['Id', 'Section', 'Label', 'Datatype', 'Terms', 'Cardinality', 'Pattern', 'Unit', 'Description', 'Enumeration', 'MissingValueCodes', 'Notes', 'Provenance', 'SeeAlso'].filter(x => Object.keys(variables[0]).includes(x));
+
+    if (allFields.length === 0 || !allFields.includes('Id')) {
+        return <ErrorPage message={<>Invalid data format.<br /><br />Expected CSV format following <a href="https://github.com/bmir-radx/radx-data-dictionary-specification/blob/main/radx-data-dictionary-specification.md" target="_blank">these specifications</a>. The <code>Id</code> column is required.</>} />
     }
 
     return (
@@ -83,7 +102,7 @@ function App({theme, data, initialView = 'list', showSearch = true, heading = 'D
                         </button>
                     </div>
                 </div>
-                <Content activeView={activeView} variables={variables} searchTerm={searchTerm} />
+                <Content activeView={activeView} variables={variables} searchTerm={searchTerm} allFields={allFields}  />
             </div>
         </div>
     )
