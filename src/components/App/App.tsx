@@ -1,4 +1,5 @@
 import { useState, useEffect, useTransition } from 'react';
+import type { ChangeEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faBorderAll, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Papa from 'papaparse';
@@ -7,45 +8,60 @@ import SearchBar from '../SearchBar/SearchBar';
 import Content from '../Content/Content';
 import ErrorPage from '../ErrorPage/ErrorPage';
 
-function App({theme, data, initialView = 'list', showSearch = true, heading = 'Data Dictionary Viewer'}) {
+interface AppProps {
+    data: string;
+    theme?: 'light' | 'dark';
+    initialView?: 'list' | 'table';
+    showSearch?: boolean;
+    heading?: string;
+}
+
+function App({ data = '', theme = 'light', initialView = 'list', showSearch = true, heading = 'Data Dictionary Viewer' }: AppProps) {
 
     const [activeView, setActiveView] = useState(initialView);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const [variables, setVariables] = useState([]);
+    const [variables, setVariables] = useState<Record<string, string>[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     const [isPending, startTransition] = useTransition();
 
-    const changeHandler = e => {
+    const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         startTransition(() => setSearchTerm(e.target.value));
     };
 
-    const parseData = text => {
+    const parseData = (text: string) => {
         Papa.parse(text, {
             header: true,
             skipEmptyLines: true,
             complete: result => {
-                setVariables(result.data);
+                setVariables(result.data as Record<string, string>[]);
                 setLoading(false);
             }
         });
     }
 
-    const fetchData = data => {
+    const fetchData = (data: string) => {
         if (data.toLowerCase().endsWith('.csv')) {
             fetch(data)
-                .then(response => response.text())
-                .then(text => parseData(text));
-        } if (data.toLowerCase().includes('radxdatahub')) {
+                .then(response => {
+                    if (response.ok) return response.text();
+                    throw new Error('Request failed!');
+                })
+                .then(text => parseData(text))
+                .catch(() => {
+                    setLoading(false);
+                    setError(true);
+                });
+        } else if (data.toLowerCase().includes('radxdatahub')) {
             fetch(data)
                 .then(response => {
                     if (response.ok) return response.json();
                     throw new Error('Request failed!');
                 })
                 .then(text => parseData(text.data))
-                .catch(e => {
+                .catch(() => {
                     setLoading(false);
                     setError(true);
                 });

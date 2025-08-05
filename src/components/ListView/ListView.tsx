@@ -1,12 +1,20 @@
 import { useState, useRef, forwardRef } from 'react';
 import { Virtuoso } from 'react-virtuoso';
+import type { VirtuosoHandle } from 'react-virtuoso';
 import useContainerWidth from '../../hooks/useContainerWidth';
 import classes from './ListView.module.scss';
 import Card from '../Card/Card';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
-function ListView({activeView, variables, searchTerm, allFields}) {
-    const listRef = useRef();
+interface ListViewProps {
+    activeView: string;
+    variables: Record<string, string>[];
+    searchTerm: string;
+    allFields: string[];
+}
+
+function ListView({ activeView, variables, searchTerm, allFields }: ListViewProps) {
+    const listRef = useRef<VirtuosoHandle | null>(null);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [containerRef, width] = useContainerWidth();
 

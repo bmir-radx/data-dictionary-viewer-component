@@ -1,8 +1,11 @@
-import classes from './TextHighlighter.module.scss';
+interface TextHighlighterProps {
+    text: string;
+    searchTerm: string;
+}
 
-function TextHighlighter({text, searchTerm}) {
+function TextHighlighter({ text, searchTerm }: TextHighlighterProps) {
 
-    let highlightedText = text;
+    let highlightedText;
 
     if (text && searchTerm && text.toLowerCase().includes(searchTerm.toLowerCase())) {
         const parts = text.split(new RegExp(`(${searchTerm.replace(/[\\^$.*+?()[\]{}|/]/g, '\\$&')})`, 'gi'));
@@ -13,7 +16,7 @@ function TextHighlighter({text, searchTerm}) {
     }
 
     return (
-        <>{highlightedText}</>
+        <>{highlightedText ?? text}</>
     )
 }
 

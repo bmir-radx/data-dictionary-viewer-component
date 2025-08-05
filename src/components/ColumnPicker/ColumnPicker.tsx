@@ -1,16 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTableColumns } from '@fortawesome/free-solid-svg-icons';
 import classes from './ColumnPicker.module.scss';
 
-function ColumnPicker({checkedColumns, setCheckedColumns, allFields}) {
+interface ColumnPickerProps {
+    checkedColumns: string[];
+    setCheckedColumns: Dispatch<SetStateAction<string[]>>;
+    allFields: string[];
+}
+
+function ColumnPicker({ checkedColumns, setCheckedColumns, allFields }: ColumnPickerProps) {
 
     const [open, setOpen] = useState(false);
-    const dropdownRef = useRef();
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const handler = (e) => {
-            if (!dropdownRef.current.contains(e.target)) {
+        const handler = (e: MouseEvent) => {
+            if (!dropdownRef.current?.contains(e.target as Node)) {
                 setOpen(false)
             }
         };

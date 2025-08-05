@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import type { RefObject } from 'react';
 
-function useContainerWidth() {
-    const ref = useRef(null);
-    const [width, setWidth] = useState(1120);
+function useContainerWidth(): [RefObject<HTMLDivElement>, number] {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const [width, setWidth] = useState<number>(1120);
 
     useEffect(() => {
         const element = ref.current;

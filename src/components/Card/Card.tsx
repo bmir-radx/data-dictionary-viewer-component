@@ -4,7 +4,13 @@ import ValueCodes from '../ValueCodes/ValueCodes';
 import Tooltip from '../Tooltip/Tooltip';
 import TextHighlighter from '../TextHighlighter/TextHighlighter';
 
-function Card({variable, searchTerm, allFields}) {
+interface CardProps {
+    variable: Record<string, string>;
+    searchTerm: string;
+    allFields: string[];
+}
+
+function Card({ variable, searchTerm, allFields }: CardProps) {
 
     const elements = allFields.filter(x => x !== 'Id').map((field, idx) => {
         if (variable[field] === '' || variable[field] === undefined) return;

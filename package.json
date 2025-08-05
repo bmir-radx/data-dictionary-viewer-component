@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "rm -rf ./dist && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "vite build --config vite.config.gh.js",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@eslint/js": "^9.25.0",
     "@r2wc/react-to-web-component": "^2.0.4",
+    "@types/papaparse": "^5.3.16",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.4.1",
@@ -42,6 +43,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.89.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0",
     "vite": "^6.3.5",
     "vite-plugin-css-injected-by-js": "^3.5.2"
   },
@@ -50,8 +53,10 @@
   ],
   "main": "./dist/data-dictionary-viewer.umd.cjs",
   "module": "./dist/data-dictionary-viewer.js",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/data-dictionary-viewer.js",
       "require": "./dist/data-dictionary-viewer.umd.cjs"
     },

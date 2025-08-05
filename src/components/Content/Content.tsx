@@ -3,20 +3,27 @@ import classes from './Content.module.scss';
 import ListView from '../ListView/ListView';
 import TableView from '../TableView/TableView';
 
-function Content({activeView, variables, searchTerm, allFields}) {
+interface ContentProps {
+    activeView: string;
+    variables: Record<string, string>[];
+    searchTerm: string;
+    allFields: string[];
+}
+
+function Content({ activeView, variables, searchTerm, allFields }: ContentProps) {
 
     const filterableCols = ['Section', 'Datatype', 'Cardinality', 'Unit'].filter(x => allFields.includes(x));
 
     const [filters, setFilters] = useState(filterableCols.reduce((acc, field) => {
         acc[field] = [];
         return acc;
-    }, {}));
+    }, {} as Record<string, string[]>));
 
     // Filterable values from full set of variables
-    const allValues = Object.keys(filters).reduce((acc, field) => {
+    const allValues = filterableCols.reduce((acc, field) => {
         acc[field] = [...new Set(variables.map(variable => variable[field]).filter(curr => curr.trim() !== ''))].sort();
         return acc;
-    }, {});
+    }, {} as Record<string, string[]>);
 
     // Filtered variables from search (displayed in list and full table)
     const searchFilteredVariables = variables.filter(variable => {
@@ -26,13 +33,13 @@ function Content({activeView, variables, searchTerm, allFields}) {
     })
 
     // Filterable values after search filter
-    const filteredValues = Object.keys(filters).reduce((acc, field) => {
-        acc[field] = [...new Set(searchFilteredVariables.map(variable => variable[field]).filter(curr => curr.trim() !== ''))].sort();
+    const filteredValues = filterableCols.reduce((acc, field) => {
+        acc[field] = [...new Set(searchFilteredVariables.map(variable => variable[field]).filter(curr => curr.trim() !== ''))];
         return acc;
-    }, {});
+    }, {} as Record<string, string[]>);
 
     // Filtered variables from both search and value filters (displayed in filtered table)
-    const valueFilteredVariables = Object.keys(filters).reduce((acc, field) => {
+    const valueFilteredVariables = filterableCols.reduce((acc, field) => {
         const enabledFilters = filters[field].filter(value => filteredValues[field].includes(value));
         return enabledFilters.length === 0 ? acc : acc.filter(variable => enabledFilters.includes(variable[field]));
     }, searchFilteredVariables);
@@ -41,7 +48,7 @@ function Content({activeView, variables, searchTerm, allFields}) {
         <div className={classes.content}>
             <p className={classes.count}>{(activeView === 'table' && Object.values(filters).some(arr => arr.length > 0)) ? `${valueFilteredVariables.length} of ` : ''}{searchFilteredVariables.length} Result(s)</p>
             <ListView activeView={activeView} variables={searchFilteredVariables} searchTerm={searchTerm} allFields={allFields} />
-            <TableView activeView={activeView} variables={valueFilteredVariables} allValues={allValues} filteredValues={filteredValues} searchTerm={searchTerm} filters={filters} setFilters={setFilters} filterableCols={filterableCols} allFields={allFields} />
+            <TableView activeView={activeView} variables={valueFilteredVariables} allValues={allValues} filteredValues={filteredValues} searchTerm={searchTerm} filters={filters} setFilters={setFilters} allFields={allFields} />
         </div>
     )
 }

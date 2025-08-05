@@ -1,4 +1,6 @@
+import type { Dispatch, SetStateAction, RefObject } from 'react';
 import { TableVirtuoso } from 'react-virtuoso';
+import type { TableVirtuosoHandle } from 'react-virtuoso';
 import classes from './Table.module.scss';
 import OntologyTerms from '../OntologyTerms/OntologyTerms';
 import ValueCodes from '../ValueCodes/ValueCodes';
@@ -6,9 +8,21 @@ import Tooltip from '../Tooltip/Tooltip';
 import TextHighlighter from '../TextHighlighter/TextHighlighter';
 import TableFilter from '../TableFilter/TableFilter';
 
-function Table({variables, searchTerm, checkedColumns, filters, setFilters, allValues, filteredValues, tableRef, setShowScrollTop, filterableCols}) {
+interface TableProps {
+    variables: Record<string, string>[];
+    searchTerm: string;
+    checkedColumns: string[];
+    filters: Record<string, string[]>;
+    setFilters: Dispatch<SetStateAction<Record<string, string[]>>>;
+    allValues: Record<string, string[]>;
+    filteredValues: Record<string, string[]>;
+    tableRef: RefObject<TableVirtuosoHandle>;
+    setShowScrollTop: Dispatch<SetStateAction<boolean>>;
+}
 
-    const fields = {
+function Table({ variables, searchTerm, checkedColumns, filters, setFilters, allValues, filteredValues, tableRef, setShowScrollTop }: TableProps) {
+
+    const fields: Record<string, number | undefined> = {
         'Id': 200,
         'Section': 120,
         'Label': 200,
@@ -29,10 +43,10 @@ function Table({variables, searchTerm, checkedColumns, filters, setFilters, allV
 
     const headers = includedFields.map((field, i) => {
         return (
-            <th key={i} style={fields[field] && {minWidth: fields[field]}}>
+            <th key={i} style={fields[field] !== undefined ? { minWidth: fields[field] } : undefined}>
                 <Tooltip id='table' field={field} />
                 {field}
-                {filterableCols.includes(field) && <TableFilter field={field} filters={filters} setFilters={setFilters} allValues={allValues} filteredValues={filteredValues} />}
+                {Object.keys(filters).includes(field) && <TableFilter field={field} filters={filters} setFilters={setFilters} allValues={allValues} filteredValues={filteredValues} />}
             </th>
         )
     })
@@ -44,7 +58,7 @@ function Table({variables, searchTerm, checkedColumns, filters, setFilters, allV
             if (field === 'Terms') {
                 element = <OntologyTerms terms={variable[field]} searchTerm={searchTerm} />
             } else if (['Enumeration', 'MissingValueCodes'].includes(field)) {
-                element = (variable[field] === '' || variable[field] === undefined) ? variable[field] : <ValueCodes values={variable[field]} searchTerm={searchTerm} />
+                element = (variable[field] === '' || variable[field] === undefined) ? <>{variable[field]}</> : <ValueCodes values={variable[field]} searchTerm={searchTerm} />
             }
 
             return <td key={i}>{element}</td>

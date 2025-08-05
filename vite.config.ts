@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
     build: {
         lib: {
-            entry: resolve(__dirname, 'src/index.jsx'),
+            entry: resolve(__dirname, 'src/index.ts'),
             name: 'Data Dictionary Viewer',
             formats: ['es', 'umd'],
             fileName: 'data-dictionary-viewer'
@@ -24,7 +24,7 @@ export default defineConfig({
             },
         },
         sourcemap: true,
-        emptyOutDir: true
+        emptyOutDir: false
     },
-    plugins: [react()],
+    plugins: [react()]
 })

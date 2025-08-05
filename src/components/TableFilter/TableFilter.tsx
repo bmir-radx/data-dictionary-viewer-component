@@ -1,16 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import classes from './TableFilter.module.scss';
 
-function TableFilter({field, filters, setFilters, allValues, filteredValues}) {
+interface TableFilterProps {
+    field: string;
+    filters: Record<string, string[]>;
+    setFilters: Dispatch<SetStateAction<Record<string, string[]>>>;
+    allValues: Record<string, string[]>;
+    filteredValues: Record<string, string[]>;
+}
+
+function TableFilter({ field, filters, setFilters, allValues, filteredValues }: TableFilterProps) {
 
     const [open, setOpen] = useState(false);
-    const dropdownRef = useRef();
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const handler = (e) => {
-            if (!dropdownRef.current.contains(e.target)) {
+        const handler = (e: MouseEvent) => {
+            if (!dropdownRef.current?.contains(e.target as Node)) {
                 setOpen(false)
             }
         };

@@ -1,15 +1,20 @@
 import classes from './OntologyTerms.module.scss';
 import TextHighlighter from '../TextHighlighter/TextHighlighter';
 
-function OntologyTerms({ terms, searchTerm }) {
+interface OntologyTermsProps {
+    terms: string;
+    searchTerm: string;
+}
+
+function OntologyTerms({ terms, searchTerm }: OntologyTermsProps) {
     if (!terms) return <></>;
 
-    const tokenize = str => str.trim().split(/\s+/);
+    const tokenize = (str: string) => str.trim().split(/\s+/);
 
-    const isOntologyTerm = token => /^[A-Z]+:[A-Za-z0-9_]+$/.test(token);
-    const isHttpLink = token => /^https?:\/\/\S+/.test(token);
+    const isOntologyTerm = (token: string) => /^[A-Z]+:[A-Za-z0-9_]+$/.test(token);
+    const isHttpLink = (token: string) => /^https?:\/\/\S+/.test(token);
 
-    const renderToken = (token, i) => {
+    const renderToken = (token: string, i: number) => {
         if (isOntologyTerm(token)) {
             const [ontology, concept] = token.split(':');
             const encoded = ontology === 'NCIT'

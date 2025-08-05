@@ -1,7 +1,19 @@
+import type { Dispatch, SetStateAction } from 'react';
 import classes from './TableOptions.module.scss';
 import ColumnPicker from '../ColumnPicker/ColumnPicker';
 
-function TableOptions({sortField, setSortField, sortDirection, setSortDirection, checkedColumns, setCheckedColumns, sortableColumns, allFields}) {
+interface TableOptionsProps {
+    sortField: string;
+    setSortField: Dispatch<SetStateAction<string>>;
+    sortDirection: string;
+    setSortDirection: Dispatch<SetStateAction<string>>;
+    checkedColumns: string[];
+    setCheckedColumns: Dispatch<SetStateAction<string[]>>;
+    sortableColumns: string[];
+    allFields: string[];
+}
+
+function TableOptions({ sortField, setSortField, sortDirection, setSortDirection, checkedColumns, setCheckedColumns, sortableColumns, allFields }: TableOptionsProps) {
 
     return (
         <div className={classes.options}>

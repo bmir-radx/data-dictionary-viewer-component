@@ -1,6 +1,11 @@
+import type { ChangeEventHandler } from 'react';
 import classes from './SearchBar.module.scss';
 
-function SearchBar({changeHandler}) {
+interface SearchBarProps {
+    changeHandler: ChangeEventHandler<HTMLInputElement>;
+}
+
+function SearchBar({ changeHandler }: SearchBarProps) {
 
     return <input className={classes.search} name='search' type='text' autoComplete='off' placeholder='🔍  Search data elements...' onChange={changeHandler} />
 }

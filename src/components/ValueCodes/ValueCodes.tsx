@@ -1,7 +1,12 @@
 import classes from './ValueCodes.module.scss';
 import TextHighlighter from '../TextHighlighter/TextHighlighter';
 
-function ValueCodes({values, searchTerm}) {
+interface ValueCodesProps {
+    values: string;
+    searchTerm: string;
+}
+
+function ValueCodes({ values, searchTerm }: ValueCodesProps) {
     
     const element = values.split('|').map((v, i) => {
         const value = v.split('=')

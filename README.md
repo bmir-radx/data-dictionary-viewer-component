@@ -78,7 +78,7 @@ Full list of props:
 | `initialView` | string   | `'list'`  | `'list'`, `'table'`     | Set the default view mode when component loads. |
 | `showSearch`  | boolean  | `true`    | `true`, `false`         | Toggle visibility of the search bar.             |
 | `heading`     | string   | `'Data Dictionary Viewer'` | Any string  | Custom title displayed at the top.              |
-| `theme`       | string   | light theme if not specified | Other available themes: `'dark'` | Choose between different visual themes.       |
+| `theme`       | string   | `'light'` | `'light'`, `'dark'` | Choose between different visual themes.       |
 
 ### Customization
 
@@ -125,7 +125,7 @@ Full list of attributes:
 | `initial-view` | string   | `'list'`  | `'list'`, `'table'`     | Set the default view mode when component loads. |
 | `show-search`  | string  | `'true'`    | `'true'`, `'false'`         | Toggle visibility of the search bar.             |
 | `heading`     | string   | `'Data Dictionary Viewer'` | Any string  | Custom title displayed at the top.              |
-| `theme`       | string   | light theme if not specified | Other available themes: `'dark'` | Choose between different visual themes.       |
+| `theme`       | string   | `'light'` | `'light'`, `'dark'` | Choose between different visual themes.       |
 
 ### Customization
 
@@ -251,7 +251,7 @@ Publish to NPM registry:
 $ npm publish --access public
 ```
 
-See: [`index.jsx`](src/index.jsx), [`vite.config.js`](vite.config.js) (outputs to `dist/` folder)
+See: [`index.ts`](src/index.ts), [`vite.config.ts`](vite.config.ts) (outputs to `dist/` folder)
 
 👉 [View NPM package](https://www.npmjs.com/package/@cyouh95/data-dictionary-viewer)
 
