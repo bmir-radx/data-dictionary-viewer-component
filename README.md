@@ -218,6 +218,8 @@ This will run the `predeploy` and `deploy` scripts defined in `package.json`:
 }
 ```
 
+Or, set up GitHub Actions as seen in [`deploy.yml`](.github/workflows/deploy.yml).
+
 See: [`index.html`](index.html), [`main.jsx`](src/main.jsx), [`vite.config.gh.js`](vite.config.gh.js) (outputs to `build/` folder)
 
 👉 [View demo GitHub Pages site](https://bmir-radx.github.io/data-dictionary-viewer-component/)
