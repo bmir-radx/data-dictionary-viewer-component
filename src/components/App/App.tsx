@@ -79,18 +79,15 @@ function App({ data = '', theme = 'light', initialView = 'list', showSearch = tr
     }
 
     if (error) {
-        return <ErrorPage message="Unable to fetch data." />
+        return <ErrorPage message='Unable to fetch data.' />
     }
 
     if (variables.length === 0) {
-        return <ErrorPage message="No data provided." />
+        return <ErrorPage message='No data provided.'/>
     }
 
     const allFields = ['Id', 'Section', 'Label', 'Datatype', 'Terms', 'Cardinality', 'Pattern', 'Unit', 'Description', 'Enumeration', 'MissingValueCodes', 'Notes', 'Provenance', 'SeeAlso'].filter(x => Object.keys(variables[0]).includes(x));
-
-    if (allFields.length === 0 || !allFields.includes('Id')) {
-        return <ErrorPage message={<>Invalid data format.<br /><br />Expected CSV format following <a href="https://github.com/bmir-radx/radx-data-dictionary-specification/blob/main/radx-data-dictionary-specification.md" target="_blank">these specifications</a>. The <code>Id</code> column is required.</>} />
-    }
+    const valid = !(allFields.length === 0 || !allFields.includes('Id'));
 
     return (
         <div className={`${classes.container} ${theme}`}>
@@ -101,7 +98,7 @@ function App({ data = '', theme = 'light', initialView = 'list', showSearch = tr
                         <SearchBar changeHandler={changeHandler} />
                     )}
                     {isPending && <FontAwesomeIcon icon={faSpinner} spin className={classes.loader} />}
-                    <div className={classes.buttons}>
+                    {valid && <div className={classes.buttons}>
                         <button
                             className={activeView === 'list' ? classes.active : ''}
                             onClick={() => setActiveView('list')}
@@ -116,9 +113,9 @@ function App({ data = '', theme = 'light', initialView = 'list', showSearch = tr
                             <FontAwesomeIcon icon={faBorderAll} className={classes.icon} />
                             Table
                         </button>
-                    </div>
+                    </div>}
                 </div>
-                <Content activeView={activeView} variables={variables} searchTerm={searchTerm} allFields={allFields}  />
+                <Content valid={valid} activeView={activeView} variables={variables} searchTerm={searchTerm} allFields={allFields} />
             </div>
         </div>
     )

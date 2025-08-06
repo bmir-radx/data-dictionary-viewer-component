@@ -9,6 +9,7 @@ import TextHighlighter from '../TextHighlighter/TextHighlighter';
 import TableFilter from '../TableFilter/TableFilter';
 
 interface TableProps {
+    valid: boolean;
     variables: Record<string, string>[];
     searchTerm: string;
     checkedColumns: string[];
@@ -20,7 +21,7 @@ interface TableProps {
     setShowScrollTop: Dispatch<SetStateAction<boolean>>;
 }
 
-function Table({ variables, searchTerm, checkedColumns, filters, setFilters, allValues, filteredValues, tableRef, setShowScrollTop }: TableProps) {
+function Table({ valid, variables, searchTerm, checkedColumns, filters, setFilters, allValues, filteredValues, tableRef, setShowScrollTop }: TableProps) {
 
     const fields: Record<string, number | undefined> = {
         'Id': 200,
@@ -39,7 +40,7 @@ function Table({ variables, searchTerm, checkedColumns, filters, setFilters, all
         'SeeAlso': undefined
     };
 
-    const includedFields = Object.keys(fields).filter(col => checkedColumns.includes(col));
+    const includedFields = valid ? Object.keys(fields).filter(col => checkedColumns.includes(col)) : [...new Set(variables.flatMap(obj => Object.keys(obj)))];
 
     const headers = includedFields.map((field, i) => {
         return (

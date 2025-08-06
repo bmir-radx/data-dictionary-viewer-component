@@ -4,13 +4,14 @@ import ListView from '../ListView/ListView';
 import TableView from '../TableView/TableView';
 
 interface ContentProps {
+    valid: boolean;
     activeView: string;
     variables: Record<string, string>[];
     searchTerm: string;
     allFields: string[];
 }
 
-function Content({ activeView, variables, searchTerm, allFields }: ContentProps) {
+function Content({ valid, activeView, variables, searchTerm, allFields }: ContentProps) {
 
     const filterableCols = ['Section', 'Datatype', 'Cardinality', 'Unit'].filter(x => allFields.includes(x));
 
@@ -28,7 +29,7 @@ function Content({ activeView, variables, searchTerm, allFields }: ContentProps)
     // Filtered variables from search (displayed in list and full table)
     const searchFilteredVariables = variables.filter(variable => {
         for (const key in variable) {
-            if (variable[key].toLowerCase().includes(searchTerm.toLowerCase())) return true;
+            if (typeof variable[key] === 'string' && variable[key].toLowerCase().includes(searchTerm.toLowerCase())) return true;
         }
     })
 
@@ -46,9 +47,9 @@ function Content({ activeView, variables, searchTerm, allFields }: ContentProps)
 
     return (
         <div className={classes.content}>
-            <p className={classes.count}>{(activeView === 'table' && Object.values(filters).some(arr => arr.length > 0)) ? `${valueFilteredVariables.length} of ` : ''}{searchFilteredVariables.length} Result(s)</p>
-            <ListView activeView={activeView} variables={searchFilteredVariables} searchTerm={searchTerm} allFields={allFields} />
-            <TableView activeView={activeView} variables={valueFilteredVariables} allValues={allValues} filteredValues={filteredValues} searchTerm={searchTerm} filters={filters} setFilters={setFilters} allFields={allFields} />
+            <p className={classes.count}>{((!valid || activeView === 'table') && Object.values(filters).some(arr => arr.length > 0)) ? `${valueFilteredVariables.length} of ` : ''}{searchFilteredVariables.length} Result(s)</p>
+            {valid && <ListView activeView={activeView} variables={searchFilteredVariables} searchTerm={searchTerm} allFields={allFields} />}
+            <TableView valid={valid} activeView={activeView} variables={valueFilteredVariables} allValues={allValues} filteredValues={filteredValues} searchTerm={searchTerm} filters={filters} setFilters={setFilters} allFields={allFields} />
         </div>
     )
 }

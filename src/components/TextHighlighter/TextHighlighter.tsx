@@ -7,7 +7,7 @@ function TextHighlighter({ text, searchTerm }: TextHighlighterProps) {
 
     let highlightedText;
 
-    if (text && searchTerm && text.toLowerCase().includes(searchTerm.toLowerCase())) {
+    if (searchTerm && text && typeof text === 'string' && text.toLowerCase().includes(searchTerm.toLowerCase())) {
         const parts = text.split(new RegExp(`(${searchTerm.replace(/[\\^$.*+?()[\]{}|/]/g, '\\$&')})`, 'gi'));
 
         highlightedText = parts.map((part, idx) => {

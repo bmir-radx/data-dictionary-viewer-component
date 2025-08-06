@@ -1,0 +1,12 @@
+.notice {
+  height: 35px;
+  line-height: 35px;
+  margin: 14px 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  .icon {
+    margin-right: 0.4rem;
+    margin-left: 0.2rem;
+    color: var(--dd-color-primary);
+  }
+}
