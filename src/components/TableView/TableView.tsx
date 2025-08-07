@@ -67,7 +67,7 @@ function TableView({
   );
 
   const [sortField, setSortField] = useState('Id');
-  const [sortDirection, setSortDirection] = useState<'Ascending' | 'Descending'>('Ascending');
+  const [sortDirection, setSortDirection] = useState('Ascending');
 
   // Keep original behavior but avoid mutating props
   const sortedVariables = useMemo(() => {
