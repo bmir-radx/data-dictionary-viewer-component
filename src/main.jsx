@@ -9,6 +9,6 @@ const root = createRoot(rootEl);
 
 root.render(
     <StrictMode>
-        <App data='/sample.csv' initialView='table' />
+        <App data='/data-dictionary-viewer-component/sample.csv' initialView='table' />
     </StrictMode>
 );
