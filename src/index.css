@@ -13,6 +13,7 @@
   --dd-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   --dd-color-text: var(--black);
   --dd-color-body-bg: #f9fafb;
+  --dd-main-width: 1880px;
 
   --dd-color-primary: #00889d;
   --dd-color-on-primary: var(--white);

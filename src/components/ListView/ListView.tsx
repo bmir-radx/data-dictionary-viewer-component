@@ -18,7 +18,7 @@ function ListView({ activeView, variables, searchTerm, allFields }: ListViewProp
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [containerRef, width] = useContainerWidth();
 
-    const columnsPerRow = width < 1120 ? 2 : 3;
+    const columnsPerRow = width < 1120 ? 2 : (width < 1500 ? 3 : 4);
     const rowCount = Math.ceil(variables.length / columnsPerRow);
 
     return (
